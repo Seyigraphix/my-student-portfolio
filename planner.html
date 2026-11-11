@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Organise academic tasks with an interactive student planner."><title>Academic Planner | Student Portfolio</title><link rel="stylesheet" href="assets/css/style.css"><script src="assets/js/main.js" defer></script></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><nav class="nav container" aria-label="Main navigation"><a class="brand" href="index.html"><span class="brand-mark">BO</span><span>Banjo<span class="brand-light"> Oluwaseyi</span></span></a><button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a class="active" href="planner.html">Academic Planner</a></li><li><a href="contact.html">Contact</a></li></ul></nav></header>
+<main id="main">
+<section class="page-hero"><div class="container"><p class="eyebrow">STAY ORGANISED</p><h1>Academic <span class="accent">planner.</span></h1><p>Add your academic activities, keep track of deadlines, and celebrate each completed task.</p></div></section>
+<section class="section container planner-layout">
+<div class="planner-main">
+<div class="planner-heading"><div><p class="eyebrow">YOUR TASK BOARD</p><h2>My tasks</h2></div><span class="saved-label"><span class="status-dot"></span> Saved in this browser</span></div>
+<form id="taskForm" class="task-form" novalidate>
+<div class="form-field task-input-field"><label for="taskTitle">Task description</label><input id="taskTitle" name="taskTitle" type="text" placeholder="e.g. Read Chapter 3 of COS 106" maxlength="100" required></div>
+<div class="form-field"><label for="taskDate">Due date</label><input id="taskDate" name="taskDate" type="date"></div>
+<button class="btn btn-primary add-task-btn" type="submit">Add task <span aria-hidden="true">+</span></button>
+</form>
+<p id="taskMessage" class="form-message" aria-live="polite"></p>
+<div class="task-toolbar"><div class="filter-tabs" role="group" aria-label="Filter tasks"><button class="filter-btn active" type="button" data-filter="all">All</button><button class="filter-btn" type="button" data-filter="active">Pending</button><button class="filter-btn" type="button" data-filter="completed">Completed</button></div><button id="clearCompleted" class="subtle-button" type="button">Clear completed</button></div>
+<ul id="taskList" class="task-list" aria-live="polite"></ul>
+<div id="emptyState" class="empty-state"><div class="empty-icon">✓</div><h3>No tasks here yet</h3><p>Add your first task above to start organising your academic activities.</p></div>
+</div>
+<aside class="planner-aside"><div class="progress-card"><p class="eyebrow">YOUR PROGRESS</p><h3>Keep moving forward.</h3><div class="progress-number"><strong id="progressPercent">0%</strong><span>completed</span></div><div class="progress-track"><span id="progressBar"></span></div><div class="progress-stats"><span><strong id="completedCount">0</strong> Done</span><span><strong id="pendingCount">0</strong> Pending</span></div></div><div class="tip-card"><span class="tip-mark">“</span><h3>Make time for what matters.</h3><p>Break large assignments into smaller tasks. A clear next step makes it easier to begin.</p></div></aside>
+</section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark">BO</span><span>Banjo<span class="brand-light"> Oluwaseyi</span></span></a><span>© <span data-year></span> Banjo Oluwaseyi</span></div></footer></body></html>
