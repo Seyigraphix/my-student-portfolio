@@ -1,18 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Contact the student behind this portfolio."><title>Contact | My Portfolio</title><link rel="stylesheet" href="assets/css/style.css"><script src="assets/js/main.js" defer></script></head>
-<body><a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><nav class="nav container" aria-label="Main navigation"><a class="brand" href="index.html"><span class="brand-mark">BO</span><span>Banjo<span class="brand-light"> Oluwaseyi</span></span></a><button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="planner.html">Academic Planner</a></li><li><a class="active" href="contact.html">Contact</a></li></ul></nav></header>
-<main id="main">
-<section class="page-hero"><div class="container"><p class="eyebrow">LET'S CONNECT</p><h1>Get in <span class="accent">touch.</span></h1><p>Have a question, an idea, or an opportunity to collaborate? Send a message using the form.</p></div></section>
-<section class="section container contact-layout">
-<div class="contact-intro"><p class="eyebrow">CONTACT DETAILS</p><h2>I'd be glad to <span class="accent">hear from you.</span></h2><p class="muted">Use the form to send a message. The current project version demonstrates front-end validation and displays a confirmation in your browser; it does not send data to a server.</p><div class="contact-detail"><span class="contact-icon">@</span><div><small>EMAIL</small><strong>o.banjo4281@miva.edu.ng</strong></div></div><div class="contact-detail"><span class="contact-icon">☎</span><div><small>PHONE</small><strong>+234 707 750 6459</strong></div></div><div class="contact-detail"><span class="contact-icon">⌖</span><div><small>LOCATION</small><strong>Nigeria</strong></div></div></div>
-<div class="contact-form-card"><form id="contactForm" novalidate>
-<div class="form-row"><div class="form-field"><label for="name">Full name</label><input type="text" id="name" name="name" placeholder="Enter your name" required><small class="field-error" id="nameError"></small></div><div class="form-field"><label for="email">Email address</label><input type="email" id="email" name="email" placeholder="name@example.com" required><small class="field-error" id="emailError"></small></div></div>
-<div class="form-field"><label for="phone">Phone number</label><input type="tel" id="phone" name="phone" placeholder="Digits only" inputmode="numeric" required><small class="field-error" id="phoneError"></small></div>
-<div class="form-field"><label for="message">Your message</label><textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea><small class="field-error" id="messageError"></small></div>
-<button class="btn btn-primary submit-btn" type="submit">Send message</button><p id="contactStatus" class="form-message" role="status" aria-live="polite"></p>
-</form></div>
-</section>
-</main>
-<footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark">BO</span><span>Banjo<span class="brand-light"> Banjo Oluwaseyi</span></span></a><span>© <span data-year></span> Banjo Oluwaseyi</span></div></footer></body></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact the student behind this portfolio.">
+    <title>Contact | My Portfolio</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main navigation">
+
+            <a class="brand" href="index.html">
+                <span class="brand-mark">BO</span>
+                <span>Banjo<span class="brand-light"> Oluwaseyi</span></span>
+            </a>
+
+            <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="planner.html">Academic Planner</a></li>
+                <li><a class="active" href="contact.html">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <section class="page-hero">
+            <div class="container">
+                <p class="eyebrow">LET'S CONNECT</p>
+                <h1>Get in <span class="accent">touch.</span></h1>
+                <p>
+                    Have a question, an idea, or an opportunity to collaborate?
+                    Send a message using the form.
+                </p>
+            </div>
+        </section>
+
+        <section class="section container contact-layout">
+
+            <div class="contact-intro">
+
+                <p class="eyebrow">CONTACT DETAILS</p>
+
+                <h2>I'd be glad to <span class="accent">hear from you.</span></h2>
+
+                <p class="muted">
+                    Use the form to send a message. The current project version
+                    demonstrates front-end validation and displays a confirmation
+                    in your browser; it does not send data to a server.
+                </p>
+
+                <div class="contact-detail">
+                    <span class="contact-icon">@</span>
+                    <div>
+                        <small>EMAIL</small>
+                        <strong>o.banjo4281@miva.edu.ng</strong>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-icon">☎</span>
+                    <div>
+                        <small>PHONE</small>
+                        <strong>+234 707 750 6459</strong>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-icon">⌖</span>
+                    <div>
+                        <small>LOCATION</small>
+                        <strong>Nigeria</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contact-form-card">
+
+                <form id="contactForm" novalidate>
+
+                    <div class="form-row">
+
+                        <div class="form-field">
+                            <label for="name">Full name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+                            <small class="field-error" id="nameError"></small>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="email">Email address</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="name@example.com"
+                                required
+                            >
+                            <small class="field-error" id="emailError"></small>
+                        </div>
+
+                    </div>
+
+                    <div class="form-field">
+                        <label for="phone">Phone number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="08012345678"
+                            inputmode="numeric"
+                            maxlength="11"
+                            minlength="11"
+                            pattern="[0-9]{11}"
+                            required
+                        >
+                        <small class="field-error" id="phoneError"></small>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="message">Your message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            placeholder="Write your message here..."
+                            required
+                        ></textarea>
+                        <small class="field-error" id="messageError"></small>
+                    </div>
+
+                    <button class="btn btn-primary submit-btn" type="submit">
+                        Send message
+                    </button>
+
+                    <p
+                        id="contactStatus"
+                        class="form-message"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+
+            <a class="brand footer-brand" href="index.html">
+                <span class="brand-mark">BO</span>
+                <span>Banjo<span class="brand-light"> Banjo Oluwaseyi</span></span>
+            </a>
+
+            <span>
+                © <span data-year></span> Banjo Oluwaseyi
+            </span>
+
+        </div>
+    </footer>
+
+</body>
+</html>

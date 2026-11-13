@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialise Lucide icons
     if (window.lucide) {
-        lucide.createIcons();
+        window.lucide.createIcons();
     }
 
     // Update copyright year
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // MOBILE NAVIGATION
+
     const menuButton = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ACADEMIC PLANNER
+
     const taskForm = document.getElementById("taskForm");
 
     if (taskForm) {
@@ -81,8 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
             } catch (error) {
-                taskMessage.textContent = "Unable to save tasks in this browser.";
-                taskMessage.className = "form-message error-message";
+                if (taskMessage) {
+                    taskMessage.textContent = "Unable to save tasks in this browser.";
+                    taskMessage.className = "form-message error-message";
+                }
             }
         }
 
@@ -107,6 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Display tasks
         function renderTasks() {
 
+            if (!taskList || !emptyState) return;
+
             taskList.innerHTML = "";
 
             const visibleTasks = tasks.filter(task => {
@@ -122,9 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return true;
             });
 
-
             emptyState.hidden = visibleTasks.length > 0;
-
 
             visibleTasks.forEach(task => {
 
@@ -195,7 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     renderTasks();
                 });
 
-
                 item.append(checkbox, details, deleteButton);
 
                 taskList.appendChild(item);
@@ -211,14 +214,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? Math.round((completed / tasks.length) * 100)
                 : 0;
 
+            if (progressPercent) {
+                progressPercent.textContent = `${percentage}%`;
+            }
 
-            progressPercent.textContent = `${percentage}%`;
+            if (progressBar) {
+                progressBar.style.width = `${percentage}%`;
+            }
 
-            progressBar.style.width = `${percentage}%`;
+            if (completedCount) {
+                completedCount.textContent = completed;
+            }
 
-            completedCount.textContent = completed;
-
-            pendingCount.textContent = pending;
+            if (pendingCount) {
+                pendingCount.textContent = pending;
+            }
         }
 
 
@@ -231,15 +241,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!title) {
 
-                taskMessage.textContent = "Please enter a task description.";
-
-                taskMessage.className = "form-message error-message";
+                if (taskMessage) {
+                    taskMessage.textContent = "Please enter a task description.";
+                    taskMessage.className = "form-message error-message";
+                }
 
                 titleInput.focus();
 
                 return;
             }
-
 
             const newTask = {
 
@@ -249,11 +259,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 title: title,
 
-                dueDate: dateInput.value,
+                dueDate: dateInput ? dateInput.value : "",
 
                 completed: false
             };
-
 
             tasks.unshift(newTask);
 
@@ -261,11 +270,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             taskForm.reset();
 
-
-            taskMessage.textContent = "Task added successfully.";
-
-            taskMessage.className = "form-message success-message";
-
+            if (taskMessage) {
+                taskMessage.textContent = "Task added successfully.";
+                taskMessage.className = "form-message success-message";
+            }
 
             currentFilter = "all";
 
@@ -276,7 +284,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.dataset.filter === "all"
                 );
             });
-
 
             renderTasks();
 
@@ -292,7 +299,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentFilter = button.dataset.filter;
 
                 filterButtons.forEach(item => {
-
                     item.classList.toggle("active", item === button);
                 });
 
@@ -312,19 +318,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 renderTasks();
 
-                taskMessage.textContent = "Completed tasks cleared.";
-
-                taskMessage.className = "form-message";
+                if (taskMessage) {
+                    taskMessage.textContent = "Completed tasks cleared.";
+                    taskMessage.className = "form-message";
+                }
             });
         }
-
 
         renderTasks();
     }
 
 
-
     // CONTACT FORM VALIDATION
+
     const contactForm = document.getElementById("contactForm");
 
     if (contactForm) {
@@ -340,12 +346,12 @@ document.addEventListener("DOMContentLoaded", () => {
             message: document.getElementById("message")
         };
 
-
         const status = document.getElementById("contactStatus");
 
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        const phonePattern = /^\d+$/;
+        // Exactly 11 digits
+        const phonePattern = /^\d{11}$/;
 
 
         // Display field errors
@@ -367,13 +373,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
+        // Phone number input restriction
+        if (fields.phone) {
+
+            fields.phone.setAttribute("maxlength", "11");
+            fields.phone.setAttribute("inputmode", "numeric");
+
+            fields.phone.addEventListener("input", () => {
+
+                // Remove non-numeric characters
+                // and limit the value to 11 digits
+                fields.phone.value = fields.phone.value
+                    .replace(/\D/g, "")
+                    .slice(0, 11);
+
+                showFieldError("phone", "");
+            });
+        }
+
+
         // Clear errors when user types
         Object.entries(fields).forEach(([fieldName, field]) => {
 
             if (!field) return;
 
             field.addEventListener("input", () => {
-
                 showFieldError(fieldName, "");
             });
         });
@@ -386,7 +410,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let valid = true;
 
-
             Object.entries(fields).forEach(([fieldName, field]) => {
 
                 if (!field) return;
@@ -394,7 +417,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const value = field.value.trim();
 
                 let error = "";
-
 
                 if (!value) {
 
@@ -412,9 +434,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     !phonePattern.test(value)
                 ) {
 
-                    error = "Use digits only (0–9).";
+                    error = "Phone number must contain exactly 11 digits.";
                 }
-
 
                 showFieldError(fieldName, error);
 
@@ -426,26 +447,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!valid) {
 
-                status.textContent =
-                    "Please correct the highlighted fields and try again.";
+                if (status) {
+                    status.textContent =
+                        "Please correct the highlighted fields and try again.";
 
-                status.className = "form-message error-message";
+                    status.className = "form-message error-message";
+                }
 
                 return;
             }
 
 
-            status.textContent =
-                `Thank you, ${fields.name.value.trim()}. Your form passed validation. This demonstration does not send messages to a server.`;
+            if (status) {
+                status.textContent =
+                    `Thank you, ${fields.name.value.trim()}. Your form passed validation. This demonstration does not send messages to a server.`;
 
-            status.className = "form-message success-message";
-
+                status.className = "form-message success-message";
+            }
 
             contactForm.reset();
 
-
             Object.keys(fields).forEach(fieldName => {
-
                 showFieldError(fieldName, "");
             });
         });
